@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Liste des produits</title>
+</head>
+<body>
+    <h1>Liste des produits</h1>
+    <table>
+        <tr>
+            <th>Marque</th>
+            <th>Nom</th>
+            <th>Prix</th>
+        </tr>
+        <% produits.forEach(produit => { %>
+        <tr>
+            <td><%= produit.marque %></td>
+            <td><%= produit.nom %></td>
+            <td><%= produit.prix %></td>
+            <td>
+                <a href="modifier?id=<%= produit._id %>">Modifier</a>
+                <a href="supprimer?id=<%= produit._id %>">Supprimer</a>
+            </td>
+        </tr>
+        <% }) %>
+    </table>
+    <a href="creer">Créer un produit</a>
+</body>
+</html>
