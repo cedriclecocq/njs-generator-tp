@@ -1,13 +1,12 @@
 'use strict';
-module.exports = class Produit {
-	constructor(marque, nom, prix, photos) {
-		this.marque = marque;
-		this.nom = nom;
-		this.prix = prix;
-		this.photos = photos;
-	}
+const mongoose = require("mongoose");
 
-	toString() {
-		return `Produit[marque: ${this.marque}, nom: ${this.nom}, prix: ${this.prix}, photos: ${this.photos}]`;
-	}
-}
+const produitShema = new mongoose.Schema({
+	marque: {type: String, required: true},
+	nom: {type: String, required: true},
+	prix: {type: Number, required: true, min: 0}
+});
+
+const Produit = mongoose.model('produit', produitShema);
+
+module.exports = Produit;

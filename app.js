@@ -9,6 +9,8 @@ var produitsRouter = require('./routes/produits');
 
 var app = express();
 
+require('./mongoose-connect');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
