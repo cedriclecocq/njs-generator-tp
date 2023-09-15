@@ -33,7 +33,7 @@ router.post('/do-creer', async (req, res, next) => {
 router.get('/modifier', async (req, res, next) => {
 	try {
 
-		const doc = await Produit.findOne({_id: req.query.id});
+		const doc = await Produit.findOne({_id: req.query.id}).exec();
 		res.render('modifier-produit', {produit: doc});
 	}
 	catch (error) {
@@ -43,7 +43,7 @@ router.get('/modifier', async (req, res, next) => {
 
 router.post('/do-modifier', async (req, res, next) => {
 	try {
-		const result = await Produit.replaceOne({_id: req.body.id}, req.body);
+		const result = await Produit.replaceOne({_id: req.body.id}, req.body).exec();
 		res.redirect('lister');
 	}
 	catch (error) {
@@ -53,7 +53,7 @@ router.post('/do-modifier', async (req, res, next) => {
 
 router.get('/supprimer', async (req, res, next) => {
 	try {
-		const deleteResult = await Produit.deleteOne({_id: req.query.id});
+		const deleteResult = await Produit.deleteOne({_id: req.query.id}).exec();
 		res.redirect('lister');
 	}
 	catch (error) {
